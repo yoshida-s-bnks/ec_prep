@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<h1>登録情報</h1>
+<p>
+  <strong>Eメール:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Crypted password:</strong>
+  <%= @user.crypted_password %>
+</p>
+
+<p>
+  <strong>Salt:</strong>
+  <%= @user.salt %>
+</p>
+
+<%= link_to '登録変更', edit_user_path(@user) %>
+<hr />
+<%= link_to '退会する', @user, confirm: "本当に退会しますか?", method: :delete %>
