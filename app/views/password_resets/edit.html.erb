@@ -1,0 +1,21 @@
+
+<h1>パスワードリセット</h1>
+<%= form_for @user, url: password_reset_path(@token), method: :put do |f| %>
+  <div>
+    <%= f.label :email %>
+    <%= @user.email %>
+    <%= f.label "token" %>
+    <%= @token %>
+  </div>
+  <div>
+    <%= f.label "パスワード" %>
+    <%= f.password_field :password %>
+  </div>
+  <div>
+    <%= f.label "パスワード確認" %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <div>
+  <%= f.submit '更新' %>
+  </div>
+<% end %>
