@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to :root, notice: 'User was successfully created' }
+        format.html { redirect_to :login, notice: 'メールから登録完了させてください。' }
         # format.json { render :show, status: :created, location: @user }
         #
         # format.html { redirect_to @user, notice: 'User was successfully created.' }
@@ -61,6 +61,15 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to :root, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def activate
+    if (@user = User.load_from_activation_token(params[:id]))
+      @user.activate!
+      redirect_to(login_path, :notice => 'User was successfully activated.')
+    else
+      not_authenticated
     end
   end
 

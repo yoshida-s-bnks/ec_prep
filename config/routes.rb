@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   root :to => 'items#index'
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :user_sessions
-  resources :users, except: :index
+  resources :users, except: :index do
+    member do
+      get :activate
+    end
+  end
 
   get 'login' => 'user_sessions#new', :as => :login
   post 'logout' => 'user_sessions#destroy', :as => :logout
