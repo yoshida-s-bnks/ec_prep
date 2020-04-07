@@ -11,6 +11,8 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @user = User.find(current_user.id)
+    @addresses = Address.where(user_id: current_user.id)
   end
 
   # GET /users/new
@@ -20,6 +22,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    @user = User.find(current_user.id)
   end
 
   # POST /users

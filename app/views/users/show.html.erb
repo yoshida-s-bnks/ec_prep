@@ -1,6 +1,9 @@
-<p id="notice"><%= notice %></p>
-
 <h1>登録情報</h1>
+<p>
+  <strong>ID:</strong>
+  <%= @user.id %>
+</p>
+
 <p>
   <strong>Eメール:</strong>
   <%= @user.email %>
@@ -20,7 +23,40 @@
   <strong>Salt:</strong>
   <%= @user.salt %>
 </p>
-
 <%= link_to '登録変更', edit_user_path(@user) %>
+
 <hr />
-<%= link_to '退会する', @user, confirm: "本当に退会しますか?", method: :delete %>
+
+<h4>住所登録</h4>
+<%= link_to '新規追加', new_address_path %>
+<% if @addresses.presence %>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>UID</th>
+    <th>郵便番号</th>
+    <th>都道府県</th>
+    <th>City</th>
+    <th>Street</th>
+    <th>Building</th>
+    <th>登録変更</th>
+  </tr>
+  <% @addresses.each do |address| %>
+    <tr>
+      <td><%= address.id %></td>
+      <td><%= address.user_id %></td>
+      <td><%= address.postcode %></td>
+      <td><%= address.prefecture_name %></td>
+      <td><%= address.address_city %></td>
+      <td><%= address.address_street %></td>
+      <td><%= address.address_building %></td>
+      <td><%= link_to '変更', edit_address_path(address) %></td>
+      <td><%= link_to '削除', address, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+<% end %>
+
+
+<hr />
+<%= link_to '退会する', @user, data: { confirm: "本当に退会しますか?" }, method: :delete %>

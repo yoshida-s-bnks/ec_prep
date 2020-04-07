@@ -1,0 +1,40 @@
+<%= form_with(model: address, local: true) do |form| %>
+  <% if address.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(address.errors.count, "error") %> prohibited this address from being saved:</h2>
+
+      <ul>
+      <% address.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%#= form.hidden_field :user_id %>
+
+  <div class="field">
+    <%= form.label "郵便番号" %>
+    <%= form.number_field :postcode, value: '1050001' %>
+  </div>
+  <div class="field">
+    <%= form.label "都道府県" %>
+    <%= form.text_field :prefecture_code, collection: JpPrefecture::Prefecture.all, :value_method => :name, include_blank: '都道府県' %>
+  </div>
+  <div class="field">
+    <%= form.label "市町村" %>
+    <%= form.text_field :address_city, value: '港区' %>
+  </div>
+  <div class="field">
+    <%= form.label "番地" %>
+    <%= form.text_field :address_street, value: '虎ノ門' %>
+  </div>
+  <div class="field">
+    <%= form.label "建物" %>
+    <%= form.text_field :address_building %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

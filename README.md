@@ -11,3 +11,16 @@ Setup Steps
   databse migration
 4. `docker-compose up`
   bring up database server and web server
+
+
+
+# mysql
+mysql -u root -p -h localhost -P 3306 --protocol=tcp
+
+
+
+## 課題
+- ユーザー退会時にaddressを全て消す
+- validates phone_numがうまくいかない
+- ログインユーザー以外のアドレスを変更出来ないようにする
+- 都道府県のリスト表示

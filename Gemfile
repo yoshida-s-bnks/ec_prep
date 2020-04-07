@@ -30,8 +30,12 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 ## user login management
 gem 'sorcery'
-
+## setting for each emvironment
 gem 'config'
+## japanese mailing address
+gem 'jp_prefecture'
+## enable jquery
+gem 'jquery-rails'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
