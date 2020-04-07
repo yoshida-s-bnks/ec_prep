@@ -3,18 +3,15 @@
 </h1>
 <table>
   <tr>
-    <th>
-      User
-    </th>
-    <th>
-      Activation Status
-    </th>
+    <th>User</th>
+    <th>Activation Status</th>
+    <th>Phone</th>
   </tr>
 <% @users.each do |user| %>
   <tr>
     <td><%= user.email %></td>
     <td><%= user.activation_state %></td>
-
+    <td><%= user.phone_num %></td>
   </tr>
 <% end %>
 </table>

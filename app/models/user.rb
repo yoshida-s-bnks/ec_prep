@@ -7,5 +7,7 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true, if: -> { new_record? || crypted_password_changed? }
 
   validates :email, presence: true, uniqueness: true
+  # validates :phone_num, presence: true, format: { with: /\d{2,4}\-?\d{2,4}]\-?\d{4}/i }
+  validates :phone_num, presence: true, format: { with: /\d\-/i }
   # validates :reset_password_token, presence: true, uniqueness: true
 end
