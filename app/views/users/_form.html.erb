@@ -26,6 +26,12 @@
     <%= form.password_field :password_confirmation %>
   </div>
 
+  <div class="field">
+    <%= form.label "電話番号（０−９、ーのみ）" %>
+    <%= form.text_field :phone_num, value: '0120-444-444' %>
+    <%# = form.text_field :phone_num, placeholder: '00-0000-0000' %>
+  </div>
+
   <div class="actions">
     <%= form.submit "登録する" %>
   </div>
